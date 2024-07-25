@@ -2,7 +2,11 @@ from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 def bienvenida(request):
-    return HttpResponse("¡Bienvenido a Mascotas!!!")
+    return render(request, 'main/bienvenida.html')
+
+
+def mascotas(request):
+    return render(request, 'mascotas/mascotas.html')
 
 
 def saludo(request, nombre):
