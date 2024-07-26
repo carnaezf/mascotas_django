@@ -6,7 +6,10 @@ def bienvenida(request):
 
 
 def mascotas(request):
-    return render(request, 'mascotas/mascotas.html')
+
+    mascotas = []
+
+    return render(request, 'mascotas/mascotas.html', {'mascotas': mascotas} )
 
 
 def saludo(request, nombre):
