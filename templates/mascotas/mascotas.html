@@ -9,7 +9,10 @@
     {% if mascotas %}  
     <ul class="list-group">
         {% for mascota in mascotas %}
-            <li class="list-group-item"> {{ mascota }} </li>
+            <!-- <li class="list-group-item"> {{ mascota }} </li> -->
+            <li class="list-group-item">
+                <a href="{% url 'detalle_mascota' mascota %}">{{ mascota }}</a>
+            </li>
         {% endfor %}
     </ul>
     {% else %}
