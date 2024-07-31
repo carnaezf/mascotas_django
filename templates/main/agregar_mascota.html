@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Mascota{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center">Agregar Nueva Mascota</h2>
+    <form method="post">
+        <!-- https://docs.djangoproject.com/en/5.0/ref/csrf/ -->
+        {% csrf_token %}
+
+        <!-- https://docs.djangoproject.com/en/5.0/topics/forms/#rendering-fields-manually -->
+        <!-- https://docs.djangoproject.com/en/5.0/ref/templates/language/ -->
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+{% endblock %} 

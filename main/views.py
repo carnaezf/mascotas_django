@@ -1,4 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
+from .forms import MascotaForm
+from .models import Mascota
 
 # Create your views here.
 def bienvenida(request):
@@ -29,9 +31,26 @@ def detalle_mascota(request, nombre):
     return render(request, 'mascotas/detalle_mascota.html', {'nombre': nombre, 'descripcion': descripcion} )
 
 
-
-
-
-
 def saludo(request, nombre):
     return HttpResponse(f"¡Hola, {nombre}")
+
+
+def agregar_mascota(request):
+    if request.method == "POST":
+        form = MascotaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_mascotas')
+    else:
+        form = MascotaForm()
+    return render(request, 'main/agregar_mascota.html', {'form': form})
+
+
+def lista_mascotas(request):
+    mascotas = Mascota.objects.all()
+    
+    return render(request, 'main/lista_mascotas.html', {'mascotas' : mascotas})
+
+
+
+
